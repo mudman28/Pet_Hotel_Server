@@ -19,10 +19,10 @@ class Pet {
     }
 
     //get products
-    function fetch()
-    {
-        $query = "pet_hotel";
-    }
+    // function fetch()
+    // {
+    //     $query = "pet_hotel";
+    // }
 
     //routes writen below 
     function read() {
