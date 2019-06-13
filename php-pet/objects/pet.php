@@ -38,20 +38,20 @@ class Pet {
 
     function create() {
            // query to insert record
-        $query = INSERT INTO pet (name, breed, color, is_checked_in, owner_id)
-        VALUES (:pet_name, :pet_color, :pet_breed, :checked_in);";
+        $query = "INSERT INTO pet (name, breed, color, is_checked_in)
+        VALUES (:name, :breed, :color, :is_checked_in);";
         // prepare query
         $stmt = $this->conn->prepare($query);
         // sanitize
-        $this->pet_name = htmlspecialchars(strip_tags($this->pet_name));
-        $this->pet_color = htmlspecialchars(strip_tags($this->pet_color));
-        $this->pet_breed = htmlspecialchars(strip_tags($this->pet_breed));
-        $this->checked_in = htmlspecialchars(strip_tags($this->checked_in));
+        $this->name = htmlspecialchars(strip_tags($this->name));
+        $this->breed = htmlspecialchars(strip_tags($this->breed));
+        $this->color = htmlspecialchars(strip_tags($this->color));
+        $this->is_checked_in = htmlspecialchars(strip_tags($this->is_checked_in));
         // bind values
-        $stmt->bindParam(':pet_name', $this->pet_name);
-        $stmt->bindParam(':pet_color', $this->pet_color);
-        $stmt->bindParam(':pet_breed', $this->pet_breed);
-        $stmt->bindParam(':checked_in', $this->checked_in);
+        $stmt->bindParam(':name', $this->name);
+        $stmt->bindParam(':breed', $this->breed);
+        $stmt->bindParam(':color', $this->color);
+        $stmt->bindParam(':is_checked_in', $this->is_checked_in);
         // execute query
         if ($stmt->execute()) {
             return true;
@@ -61,5 +61,22 @@ class Pet {
 
     function delete() {
 
+        $query = "DELETE FROM pet WHERE id = ?";
+      
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+     
+        // sanitize
+        $this->id=htmlspecialchars(strip_tags($this->id));
+     
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->id);
+     
+        // execute query
+        if($stmt->execute()){
+            return true;
+        }
+     
+        return false;
     }
 }
