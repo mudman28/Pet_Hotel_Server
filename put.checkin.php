@@ -11,7 +11,7 @@
     }
 
     $sql =<<<EOF
-    UPDATE pet SET is_checked_in = $1 WHERE ID=$2;
+    UPDATE pet SET is_checked_in = CURRENT_DATE WHERE ID=$1;
 EOF;
     $ret = pg_query($db, $sql);
     if(!$ret) {
