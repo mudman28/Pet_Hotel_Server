@@ -1,18 +1,17 @@
 <?php
-class owner
-{
 
+class Pet {
 
     //database connection & table
     private $conn;
-    private $table_name = "pet"; 
+    public $table_name = "pet"; 
 
     //object props
     public $id; 
-    public $pet_name; 
-    public $pet_color;
-    public $pet_breed;
-    public $checked_in; 
+    public $name; 
+    public $color;
+    public $breed;
+    public $is_checked_in; 
 
     public function __construct($db)
     {
@@ -24,25 +23,24 @@ class owner
     {
         $query = "pet_hotel";
     }
+
+    //routes writen below 
+    function read() {
+
+        $query = "SELECT * FROM " . $this->table_name . ";"; 
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->execute(); 
+        return $stmt; 
+
+    }
+
+    function create() {
+
+    }
+
+    function delete() {
+
+    }
 }
-
-
-function read() {
-
-    $query = "SELECT * FROM " . $table_name . ";"; 
-
-    $stmt = $this->conn->prepare($query);
-
-    $stmt->execute(); 
-    return $stmt; 
-
-}
-
-function create() {
-
-}
-
-function delete() {
-
-}
-//routes writen below 

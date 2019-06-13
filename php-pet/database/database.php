@@ -5,7 +5,7 @@ class Database
     // database credetials
     private $host = "localhost";
     private $dbname = "pet_hotel";
-    private $dbuser = "roach"; 
+    private $dbuser = ""; 
     private $dbpass = "";
     public $conn; 
 
