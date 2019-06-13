@@ -50,6 +50,9 @@ class owner
 
     function delete() {
 
+            $query = "DELETE FROM owner WHERE id = "
+
+            
 
     }
 }
