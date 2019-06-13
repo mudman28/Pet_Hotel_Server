@@ -18,7 +18,7 @@ $db = $database->getConnection();
 $pet = new Pet($db); 
 
 $stmt = $pet->read();
-$num = $stmt-rowCount(); 
+$num = $stmt->rowCount(); 
 
 
 
