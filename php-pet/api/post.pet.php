@@ -34,7 +34,7 @@ if (
     $pet->name = $data->name; 
     $pet->color = $data->color; 
     $pet->breed = $data->breed; 
-    $pet->check_in = $data->check_in; 
+    $pet->is_checkin_in = $data->is_checkin_in; 
 
 
     if ($pet->create()) {
