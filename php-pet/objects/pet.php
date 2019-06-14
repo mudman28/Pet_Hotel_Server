@@ -16,33 +16,34 @@ class Pet {
     public $breed;
     public $is_checked_in; 
 
+
     public function __construct($db)
     {
         $this->conn= $db; 
     }
 
-    //get products
-    // function fetch()
-    // {
-    //     $query = "pet_hotel";
-    // }
+    
 
     //routes writen below 
-    function read() {
+    function get() {
 
         $query = "SELECT * FROM " . $this->table_name . ";"; 
 
+        //prepare the query 
         $stmt = $this->conn->prepare($query);
 
+        //executes the qeury 
         $stmt->execute(); 
+
+        //returns the results 
         return $stmt; 
 
     }
 
-    function create() {
+    function post() {
            // query to insert record
         $query = "INSERT INTO pet (name, breed, color, is_checked_in)
-        VALUES (:name, :breed, :color, :is_checked_in);";
+        VALUES (name, breed, color, is_checked_in);";
         // prepare query
         $stmt = $this->conn->prepare($query);
         // sanitize
@@ -51,10 +52,10 @@ class Pet {
         $this->color = htmlspecialchars(strip_tags($this->color));
         $this->is_checked_in = htmlspecialchars(strip_tags($this->is_checked_in));
         // bind values
-        $stmt->bindParam(':name', $this->name);
-        $stmt->bindParam(':breed', $this->breed);
-        $stmt->bindParam(':color', $this->color);
-        $stmt->bindParam(':is_checked_in', $this->is_checked_in);
+        $stmt->bindParam('name', $this->name);
+        $stmt->bindParam('breed', $this->breed);
+        $stmt->bindParam('color', $this->color);
+        $stmt->bindParam('is_checked_in', $this->is_checked_in);
         // execute query
         if ($stmt->execute()) {
             return true;
@@ -64,6 +65,7 @@ class Pet {
 
     function delete() {
 
+        //delete query created 
         $query = "DELETE FROM pet WHERE id = ?";
       
         // prepare query
@@ -82,4 +84,7 @@ class Pet {
      
         return false;
     }
+
+
+    
 }
