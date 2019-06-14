@@ -2,11 +2,14 @@
 
 class Pet {
 
-    //database connection & table
+    //cannot acces conn outside pet class
     private $conn;
+
+    //visibility modifier, name set to pet database
     public $table_name = "pet"; 
 
-    //object props
+    // visibility modifier, anyone can access these 
+    // colonms in table 
     public $id; 
     public $name; 
     public $color;

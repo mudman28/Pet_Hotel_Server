@@ -1,12 +1,14 @@
 <?php
 
-
+//disables CORS protection, grants access to all 
 header("Access-Control-Allow-Origin: *");
+//designates the content to be in JSON format, encoded in the UTF-8 character encoding
 header("Content-Type: application/json; charset=UTF-8");
 
-
+//makes sure both files are only ran once
 include_once '../database/database.php';
 include_once '../objects/pet.php';
+
 
 $database = new Database(); 
 $db = $database->getConnection(); 
@@ -18,6 +20,7 @@ $num = $stmt->rowCount();
 
 if ( $num > 0) {
 
+    //creating new array $pets_arr 
    $pets_arr = array();
    $pets_arr["pets"] = array();
 

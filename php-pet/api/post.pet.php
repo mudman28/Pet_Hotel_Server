@@ -8,7 +8,7 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 
-include_once '../config/database.php';
+include_once '../database/database.php';
 
 include_once '../objects/pet.php';
 
@@ -26,7 +26,7 @@ if (
 
     !empty($data->name) &&
     !empty($data->color) &&
-    !empty($data->bread) &&
+    !empty($data->breed) &&
     !empty($data->is_checkin_in) 
 
 ) {

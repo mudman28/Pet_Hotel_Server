@@ -2,11 +2,11 @@
 class owner
 {
 
-    //database connection 
+    //cannot modifiy conn
     private $conn;
     // private $table_owner = "owners"; 
 
-    //object props
+    //cannot modify id 
     public $id; 
     // public $owner_name; 
 
@@ -52,7 +52,7 @@ class owner
 
             $query = "DELETE FROM owner WHERE id = "
 
-            
+
 
     }
 }
